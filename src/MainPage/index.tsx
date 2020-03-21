@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './MainPage.sass'
 
-const MainPage = () => {
+const MainPage: React.FC = () => {
   const [username, setUsername] = useState<string | null>(null)
 
   return (
