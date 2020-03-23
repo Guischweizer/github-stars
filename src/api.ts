@@ -10,7 +10,10 @@ const get = (resource: string) =>
     .then(response => parseDataToCamelCase(response))
 
 export const getAllUserRepos = (username: string): Promise<Repositories> =>
-  get(`users/${username}/repos`).then(response => response.data)
+  get(`users/${username}/repos`).then(response => {
+    console.log('tosendo chamado', response)
+    return response.data
+  })
 
 export const getRepoLanguages = (languagesUrl: string) =>
   get(languagesUrl).then(response => response.data)
