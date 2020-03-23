@@ -1,18 +1,22 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { REPOSITORIES_TABLE } from '../routes'
 
 import { getUserRepositories } from '../store/repositories/selectors'
 import { loadUserRepositories } from '../store/repositories/actions'
 
 import './MainPage.sass'
 
-const MainPage: React.FC = () => {
+const MainPage = ({ history }) => {
   const dispatch = useDispatch()
-  const [username, setUsername] = useState<string | null>(null)
+  const [username, setUsername] = useState(null)
   const repositories = useSelector(getUserRepositories)
 
   const handleGetReposClick = () => {
     username && dispatch(loadUserRepositories(username))
+    if (repositories) {
+      history.push(REPOSITORIES_TABLE)
+    }
   }
 
   return (

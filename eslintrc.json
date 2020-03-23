@@ -9,7 +9,7 @@
     "plugin:@typescript-eslint/recommended-requiring-type-checking"
   ],
   "parserOptions": {
-    "project": "./tsconfig.json"
+    "project": "./jsconfig.json"
   },
 
   "plugins": ["prettier", "react-hooks", "@typescript-eslint"],

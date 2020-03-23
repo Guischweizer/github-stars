@@ -1,19 +1,18 @@
 import axios from 'axios'
 import configuration from './configuration'
 import { parseDataToCamelCase } from './Parser'
-import { Repositories } from './models/Repositories'
 
-const get = (resource: string) =>
+const get = resource =>
   axios
     .get(`${configuration.apiUrl}/${resource}`)
     .then(response => response.data)
     .then(response => parseDataToCamelCase(response))
 
-export const getAllUserRepos = (username: string): Promise<Repositories> =>
+export const getAllUserRepos = username =>
   get(`users/${username}/repos`).then(response => {
     console.log('tosendo chamado', response)
     return response.data
   })
 
-export const getRepoLanguages = (languagesUrl: string) =>
+export const getRepoLanguages = languagesUrl =>
   get(languagesUrl).then(response => response.data)

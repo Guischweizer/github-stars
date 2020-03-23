@@ -1,8 +1,12 @@
-import React from 'react'
-import MainPage from './MainPage'
+import React, { Fragment } from 'react'
+import Router from './router'
 
-function App() {
-  return <MainPage />
+const App = () => {
+  return (
+    <Fragment>
+      <Router />
+    </Fragment>
+  )
 }
 
 export default App
