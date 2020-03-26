@@ -9,10 +9,7 @@ const get = resource =>
     .then(response => parseDataToCamelCase(response))
 
 export const getAllUserRepos = username =>
-  get(`users/${username}/repos`).then(response => {
-    console.log('tosendo chamado', response)
-    return response.data
-  })
+  get(`users/${username}/repos`).then(response => response)
 
 export const getRepoLanguages = languagesUrl =>
   get(languagesUrl).then(response => response.data)

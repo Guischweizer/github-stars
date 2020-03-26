@@ -9,7 +9,6 @@ const initialState = {
   repositories: [],
   isFetching: false,
 }
-
 const reducer = handleActions(
   {
     [fetchUserRepositoriesRequest]: state => ({

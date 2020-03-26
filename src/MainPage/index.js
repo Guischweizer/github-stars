@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { REPOSITORIES_TABLE } from '../routes'
 
-import { getUserRepositories } from '../store/repositories/selectors'
+import {
+  getUserRepositories,
+  getIsFetching,
+} from '../store/repositories/selectors'
 import { loadUserRepositories } from '../store/repositories/actions'
 
 import './MainPage.sass'
@@ -11,11 +13,12 @@ const MainPage = ({ history }) => {
   const dispatch = useDispatch()
   const [username, setUsername] = useState(null)
   const repositories = useSelector(getUserRepositories)
+  const isLoading = useSelector(getIsFetching)
 
-  const handleGetReposClick = () => {
-    username && dispatch(loadUserRepositories(username))
-    if (repositories) {
-      history.push(REPOSITORIES_TABLE)
+  const handleGetReposClick = async () => {
+    username && (await dispatch(loadUserRepositories(username)))
+    if (repositories.length > 0 && !isLoading) {
+      history.push('/repositories')
     }
   }
 
