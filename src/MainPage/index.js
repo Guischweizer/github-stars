@@ -15,8 +15,8 @@ const MainPage = ({ history }) => {
   const repositories = useSelector(getUserRepositories)
   const isLoading = useSelector(getIsFetching)
 
-  const handleGetReposClick = async () => {
-    username && (await dispatch(loadUserRepositories(username)))
+  const handleGetReposClick = () => {
+    username && dispatch(loadUserRepositories(username))
     if (repositories.length > 0 && !isLoading) {
       history.push('/repositories')
     }
