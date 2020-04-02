@@ -16,7 +16,7 @@ const reducer = handleActions(
       isFetching: true,
     }),
     [fetchUserRepositoriesSuccess]: (state, action) => ({
-      ...state,
+      repositories: state,
       ...action.payload,
       isFetching: false,
     }),
