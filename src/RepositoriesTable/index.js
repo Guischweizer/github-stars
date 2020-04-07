@@ -1,24 +1,30 @@
 import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { getUserRepositories } from '../store/repositories/selectors'
 import './TableStyle/table.css'
 import './TableStyle/table.sass'
+import { cleanStorage } from '../store/repositories/actions'
 
 const RepositoriesTable = ({ history }) => {
+  const dispatch = useDispatch()
   const repositories = useSelector(getUserRepositories)
-  console.log('repositories at table', repositories)
+
   useEffect(() => {
     if (repositories.length === 0) {
       history.push('/')
     }
   })
 
+  const homeButtonClick = () => {
+    dispatch(cleanStorage())
+    history.push('/')
+  }
   return (
     <div>
       <div className="header-with-input">
         <div className="repositories-table-header">
           <h2 className="main-title">GitHub Stars</h2>
-          <button className="home-button" onClick={() => history.push('/')}>
+          <button className="home-button" onClick={homeButtonClick}>
             HOME
           </button>
         </div>
