@@ -8,7 +8,7 @@ import {
 
 const initialState = {
   repositories: [],
-  isFetching: true,
+  isFetching: false,
 }
 const reducer = handleActions(
   {

@@ -15,7 +15,10 @@ const loadUserRepositories = username => async dispatch => {
   dispatch(fetchUserRepositoriesRequest())
   try {
     const repositories = await getAllUserRepos(username)
-    return dispatch(fetchUserRepositoriesSuccess({ repositories }))
+    return setTimeout(
+      () => dispatch(fetchUserRepositoriesSuccess({ repositories })),
+      3000,
+    )
   } catch (exception) {
     dispatch(fetchUserRepositoriesFail())
   }
