@@ -1,10 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import {
-  getUserRepositories,
-  getIsFetching,
-} from '../store/repositories/selectors'
+import { getUserRepositories } from '../store/repositories/selectors'
 import { loadUserRepositories } from '../store/repositories/actions'
 
 import './MainPage.sass'
@@ -13,14 +10,16 @@ const MainPage = ({ history }) => {
   const dispatch = useDispatch()
   const [username, setUsername] = useState(null)
   const repositories = useSelector(getUserRepositories)
-  const isLoading = useSelector(getIsFetching)
 
   const handleGetReposClick = () => {
     username && dispatch(loadUserRepositories(username))
-    if (repositories.length > 0 && !isLoading) {
+  }
+
+  useEffect(() => {
+    if (repositories.length > 0) {
       history.push('/repositories')
     }
-  }
+  })
 
   return (
     <div>
