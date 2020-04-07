@@ -9,6 +9,8 @@ const fetchUserRepositoriesSuccess = createAction(
 )
 const fetchUserRepositoriesFail = createAction('FETCH_USER_REPOSITORIES_FAIL')
 
+const cleanStorage = createAction('CLEAN_STORAGE')
+
 const loadUserRepositories = username => async dispatch => {
   dispatch(fetchUserRepositoriesRequest())
   try {
@@ -24,4 +26,5 @@ export {
   fetchUserRepositoriesFail,
   fetchUserRepositoriesRequest,
   loadUserRepositories,
+  cleanStorage,
 }

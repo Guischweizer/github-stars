@@ -3,11 +3,12 @@ import {
   fetchUserRepositoriesSuccess,
   fetchUserRepositoriesRequest,
   fetchUserRepositoriesFail,
+  cleanStorage,
 } from './actions'
 
 const initialState = {
   repositories: [],
-  isFetching: false,
+  isFetching: true,
 }
 const reducer = handleActions(
   {
@@ -23,6 +24,10 @@ const reducer = handleActions(
     [fetchUserRepositoriesFail]: (state, action) => ({
       ...state,
       ...action.payload,
+      isFetching: false,
+    }),
+    [cleanStorage]: () => ({
+      repositories: [],
       isFetching: false,
     }),
   },
