@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getUserRepositories } from '../store/repositories/selectors'
 import { loadUserRepositories } from '../store/repositories/actions'
 import { History } from 'history'
-import TreesBackground from './tressbackground'
+import TreesBackground from '../Background/tressbackground'
 import './MainPage.sass'
 
 interface AppProps {
@@ -28,9 +28,9 @@ const MainPage = ({ history }: AppProps) => {
 
   return (
     <div>
-      <TreesBackground />
       <div className="main-content">
-        <div className="main-username-input">
+        <h3 className="title">Github ✧</h3>
+        <div className="username-input">
           <span>https://github.com/</span>
           <input
             placeholder="username"
@@ -39,7 +39,7 @@ const MainPage = ({ history }: AppProps) => {
           />
         </div>
         <button
-          className="main-get-repositories-button"
+          className="get-repositories-button"
           onClick={handleGetReposClick}
         >
           Get Repositories
