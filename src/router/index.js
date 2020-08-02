@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { ConnectedRouter } from 'connected-react-router'
 import RepositoriesTable from '../RepositoriesTable'
-import MainPage from '../MainPage'
+import MainPage from '../MainPage/index'
 import { history } from '../utils/browser'
 import { REPOSITORIES_TABLE } from '../routes'
 

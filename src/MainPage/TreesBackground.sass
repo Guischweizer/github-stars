@@ -1,0 +1,114 @@
+body
+  background-color: PeachPuff
+
+.scene
+  position: absolute
+  top: 50px
+  left: 50px
+
+.sky
+  position: absolute
+  left: 75px
+
+  > *
+    position: absolute
+
+.sun
+  background-color: SlateGray
+  border-radius: 60px
+  width: 60px
+  min-height: 60px
+  z-index: 1
+
+.clouds
+  z-index: 2
+  animation: moveClouds 10s 0s infinite alternate ease both
+
+.cloud
+  background-color: white
+  border-radius: 20px
+  min-height: 26px
+  position: absolute
+
+  &:nth-child(1)
+    width: 70px
+    top: 13px
+    left: 30px
+
+  &:nth-child(2)
+    width: 120px
+    top: 26px
+
+  &:nth-child(3)
+    width: 80px
+    top: 39px
+
+.tree
+  position: absolute
+  z-index: 3
+
+  &.rounded
+    top: 34px
+    left: 50px
+
+  &.pointed
+    top: 60px
+    left: 180px
+
+  > *
+    position: absolute
+
+.rounded .leaves
+  background-color: Silver
+  border-radius: 30px
+  min-height: 150px
+  width: 60px
+
+.pointed
+  .leaves
+    width: 60px
+
+  .leaf
+    border-left: 30px solid transparent
+    border-right: 30px solid transparent
+    border-bottom: 84px solid Silver
+    position: absolute
+
+    &:nth-child(2)
+      top: 36px
+
+    &:nth-child(3)
+      top: 72px
+
+.branches
+  top: 40px
+  left: 24px
+
+  > *
+    background-color: Black
+    position: absolute
+
+.trunk
+  border-radius: 6px
+  min-height: 160px
+  width: 12px
+
+.branch
+  border-radius: 3px
+  min-height: 30px
+  width: 6px
+  transform: rotate(45deg) translate(15px)
+
+  &:nth-child(2)
+    transform: rotate(-45deg) translate(-10px)
+    top: 20px
+
+  &:nth-child(3)
+    top: 50px
+
+@keyframes moveClouds
+  from
+    left: -80px
+
+  to
+    left: 110px

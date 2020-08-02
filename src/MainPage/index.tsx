@@ -3,12 +3,17 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { getUserRepositories } from '../store/repositories/selectors'
 import { loadUserRepositories } from '../store/repositories/actions'
-
+import { History } from 'history'
+import TreesBackground from './tressbackground'
 import './MainPage.sass'
 
-const MainPage = ({ history }) => {
+interface AppProps {
+  history: History
+}
+
+const MainPage = ({ history }: AppProps) => {
   const dispatch = useDispatch()
-  const [username, setUsername] = useState(null)
+  const [username, setUsername] = useState<string>('')
   const repositories = useSelector(getUserRepositories)
 
   const handleGetReposClick = () => {
@@ -23,13 +28,14 @@ const MainPage = ({ history }) => {
 
   return (
     <div>
-      <h2 className="main-title">GitHub Stars</h2>
+      <TreesBackground />
       <div className="main-content">
         <div className="main-username-input">
           <span>https://github.com/</span>
           <input
             placeholder="username"
             onChange={e => setUsername(e.target.value)}
+            value={username}
           />
         </div>
         <button
