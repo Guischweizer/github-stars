@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getUserRepositories } from '../store/repositories/selectors'
 import { loadUserRepositories } from '../store/repositories/actions'
 import { History } from 'history'
-import TreesBackground from '../Background/tressbackground'
 import './MainPage.sass'
 
 interface AppProps {
