@@ -7,7 +7,7 @@ import { Provider } from 'react-redux'
 import { history } from './utils/browser'
 
 import reducer from './store'
-import './index.css'
+import './index.sass'
 import App from './App'
 
 const store = createStore(
