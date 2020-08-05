@@ -1,49 +1,35 @@
-import React, { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-
-import { getUserRepositories } from '../store/repositories/selectors'
-import { loadUserRepositories } from '../store/repositories/actions'
-import { History } from 'history'
+import React, { useState } from 'react'
 import './MainPage.sass'
+import TressBackground from '../Background/tressbackground'
+import Loader from '../Loader'
+import MainCard from '../MainCard'
+import RepositoriesTable from '../RepositoriesTable'
 
-interface AppProps {
-  history: History
-}
-
-const MainPage = ({ history }: AppProps) => {
-  const dispatch = useDispatch()
+const MainPage = () => {
   const [username, setUsername] = useState<string>('')
-  const repositories = useSelector(getUserRepositories)
+  const [repositories, setRepositories] = useState([])
+  const [isLoading, setIsLoading] = useState<Boolean>(false)
 
-  const handleGetReposClick = () => {
-    username && dispatch(loadUserRepositories(username))
-  }
-
-  useEffect(() => {
-    if (repositories.length > 0) {
-      history.push('/repositories')
-    }
-  })
+  const getStarredRepositories = () => {}
 
   return (
     <div>
-      <div className="main-content">
-        <h3 className="title">Github ✧</h3>
-        <div className="username-input">
-          <span>https://github.com/</span>
-          <input
-            placeholder="username"
-            onChange={e => setUsername(e.target.value)}
-            value={username}
-          />
+      <TressBackground />
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div>
+          {!repositories.length ? (
+            <MainCard
+              username={username}
+              setUsername={setUsername}
+              getStarredRepositories={getStarredRepositories}
+            />
+          ) : (
+            <RepositoriesTable />
+          )}
         </div>
-        <button
-          className="get-repositories-button"
-          onClick={handleGetReposClick}
-        >
-          Get Repositories
-        </button>
-      </div>
+      )}
     </div>
   )
 }
