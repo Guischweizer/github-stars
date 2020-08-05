@@ -6,7 +6,7 @@ const get = (resource: string) =>
     .get(`${configuration.apiUrl}/${resource}`)
     .then(response => response.data)
 
-export const getAllUserRepos = (username: string) =>
+export const getStarredUserRepositories = (username: string) =>
   get(`users/${username}/starred`).then(response => response)
 
 export const getRepoLanguages = (languagesUrl: string) =>
